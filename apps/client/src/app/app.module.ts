@@ -5,6 +5,7 @@ import { AppService } from './app.service';
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import fs from 'fs';
+import { UserModule } from '@fake-twitter/user';
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import fs from 'fs';
         },
       }),
     }),
+    UserModule,
   ],
   controllers: [AppController],
   providers: [AppService],
