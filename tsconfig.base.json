@@ -14,7 +14,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@fake-twitter/models": ["libs/models/src/index.ts"],
+      "@fake-twitter/post": ["libs/post/src/index.ts"],
+      "@fake-twitter/user": ["libs/user/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
