@@ -28,9 +28,12 @@ import { UserController } from './controller/user.controller';
         migrationsRun: config.get('TYPEORM_MIGRATIONS_RUN') === 'true',
         synchronize: config.get('TYPEORM_SYNCHRONIZE') === 'true',
         maxQueryExecutionTime: 300,
-        ssl: {
-          ca: fs.readFileSync('ap-southeast-2-bundle.pem').toString(),
-        },
+        ssl:
+          config.get('TYPEORM_SSL') === 'true'
+            ? {
+                ca: fs.readFileSync('ap-southeast-2-bundle.pem').toString(),
+              }
+            : false,
       }),
     }),
     UserModule,
