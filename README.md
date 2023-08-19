@@ -7,7 +7,7 @@
 
 ## Start the app
 
-To start the development server run `nx serve client`. Open your browser and navigate to http://localhost:4200/. Happy coding!
+To start the development server run `yarn serve:api:client`. Open your browser and navigate to http://localhost:3000/docs. Happy coding!
 
 
 ## Generate code
