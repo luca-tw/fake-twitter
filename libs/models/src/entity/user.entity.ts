@@ -5,7 +5,7 @@ export class UserEntity {
   @PrimaryGeneratedColumn('uuid')
   id!: string;
 
-  @Column({ type: 'varchar', comment: '帳戶/信箱' })
+  @Column({ type: 'varchar', unique: true, comment: '帳戶/信箱' })
   email!: string;
 
   @Column({ type: 'bool', default: false, comment: '信箱驗證' })
