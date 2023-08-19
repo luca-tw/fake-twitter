@@ -1,10 +1,15 @@
-import { IsDateString, IsEnum, IsMobilePhone, IsOptional, IsString, MaxLength } from 'class-validator';
+import { IsDate, IsDateString, IsEnum, IsMobilePhone, IsOptional, IsString } from 'class-validator';
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { GenderEnum } from '@fake-twitter/models';
+import { Type } from 'class-transformer';
 export class CreateUserArgsDto {
   @ApiProperty()
   @IsString()
   email!: string;
+
+  @ApiProperty()
+  @IsString()
+  password!: string;
 
   @ApiProperty()
   @IsString()
@@ -27,7 +32,8 @@ export class CreateUserArgsDto {
   thumbnail?: string | null;
 
   @ApiProperty()
-  @IsDateString()
+  @IsDate()
   @IsOptional()
-  birthday?: string | null;
+  @Type(() => Date)
+  birthday?: Date | null;
 }

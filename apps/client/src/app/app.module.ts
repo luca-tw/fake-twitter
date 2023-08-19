@@ -6,6 +6,7 @@ import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import fs from 'fs';
 import { UserModule } from '@fake-twitter/user';
+import { UserController } from './controller/user.controller';
 
 @Module({
   imports: [
@@ -25,7 +26,7 @@ import { UserModule } from '@fake-twitter/user';
         autoLoadEntities: true,
         migrationsRun: config.get('TYPEORM_MIGRATIONS_RUN') === 'true',
         synchronize: config.get('TYPEORM_SYNCHRONIZE') === 'true',
-        maxQueryExecutionTime: 200,
+        maxQueryExecutionTime: 300,
         ssl: {
           ca: fs.readFileSync('ap-southeast-2-bundle.pem').toString(),
         },
@@ -33,7 +34,7 @@ import { UserModule } from '@fake-twitter/user';
     }),
     UserModule,
   ],
-  controllers: [AppController],
+  controllers: [AppController, UserController],
   providers: [AppService],
 })
 export class AppModule {}
