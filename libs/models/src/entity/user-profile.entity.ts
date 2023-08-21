@@ -15,7 +15,7 @@ export class UserProfileEntity {
   name!: string;
 
   @Column({ type: 'enum', enum: GenderEnum, default: GenderEnum.OTHER, comment: '性別' })
-  gender!: string;
+  gender!: GenderEnum;
 
   @Column({ type: 'varchar', comment: '電話號碼' })
   phone!: string;

@@ -1,4 +1,4 @@
-import { AuthGuard, CreateUserArgsDto, LoginUserArgsDto, UserId, UserService } from '@fake-twitter/user';
+import { AuthGuard, CreateUserArgsDto, LoginUserArgsDto, UserDto, UserId, UserService } from '@fake-twitter/user';
 import { BadRequestException, Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
 import { ApiBearerAuth, ApiOperation, ApiProperty, ApiTags } from '@nestjs/swagger';
 
@@ -12,11 +12,23 @@ export class UserController {
   @ApiBearerAuth()
   @UseGuards(AuthGuard)
   @Get('/me')
-  me(@UserId() userId: string) {
+  async me(@UserId() userId: string): Promise<UserDto> {
     if (!userId) {
       throw new BadRequestException();
     }
-    return this.userService.findById(userId);
+
+    const userProfile = await this.userService.findById(userId);
+    const user: UserDto = {
+      id: userProfile.id,
+      email: userProfile.user.email,
+      name: userProfile.name,
+      gender: userProfile.gender,
+      phone: userProfile.phone,
+      thumbnail: userProfile.thumbnail,
+      birthday: userProfile.birthday,
+    };
+
+    return user;
   }
 
   @ApiProperty()
