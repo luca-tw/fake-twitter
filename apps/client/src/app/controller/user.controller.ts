@@ -21,7 +21,7 @@ export class UserController {
     const user: UserDto = {
       id: userProfile.id,
       email: userProfile.user.email,
-      name: userProfile.name,
+      username: userProfile.username,
       gender: userProfile.gender,
       phone: userProfile.phone,
       thumbnail: userProfile.thumbnail,

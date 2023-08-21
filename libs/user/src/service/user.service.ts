@@ -48,7 +48,7 @@ export class UserService {
       const userProfile = await queryRunner.manager.getRepository(UserProfileEntity).save(
         this.userProfileRepo.create({
           user,
-          name: args.name.trim(),
+          username: args.username.trim(),
           phone: args.phone.trim(),
           birthday: args.birthday,
           gender: args.gender,

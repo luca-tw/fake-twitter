@@ -15,7 +15,7 @@ export class CreateUserArgsDto {
 
   @ApiProperty()
   @IsString()
-  name!: string;
+  username!: string;
 
   @ApiPropertyOptional({
     type: String,

@@ -11,8 +11,8 @@ export class UserProfileEntity {
   @JoinColumn({ name: 'id', referencedColumnName: 'id' })
   user!: UserEntity;
 
-  @Column({ type: 'varchar', comment: '姓名' })
-  name!: string;
+  @Column({ type: 'varchar', unique: true, comment: '姓名' })
+  username!: string;
 
   @Column({ type: 'enum', enum: GenderEnum, default: GenderEnum.OTHER, comment: '性別' })
   gender!: GenderEnum;
