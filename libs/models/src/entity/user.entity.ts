@@ -14,9 +14,9 @@ export class UserEntity {
   @Column({ type: 'varchar', nullable: false })
   password!: string;
 
-  @CreateDateColumn({ type: 'timestamp with time zone', comment: '建立於何時' })
+  @CreateDateColumn({ type: 'timestamp with time zone', comment: '建立時間' })
   createdAt!: Date;
 
-  @UpdateDateColumn({ type: 'timestamp with time zone', comment: '更新於何時' })
+  @UpdateDateColumn({ type: 'timestamp with time zone', comment: '更新時間' })
   updatedAt!: Date;
 }

@@ -7,6 +7,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import fs from 'fs';
 import { UserModule } from '@fake-twitter/user';
 import { UserController } from './controller/user.controller';
+import { PostModule } from '@fake-twitter/post';
 
 @Module({
   imports: [
@@ -37,6 +38,7 @@ import { UserController } from './controller/user.controller';
       }),
     }),
     UserModule,
+    PostModule,
   ],
   controllers: [AppController, UserController],
   providers: [AppService],
