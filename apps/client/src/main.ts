@@ -41,7 +41,13 @@ async function bootstrap() {
     }),
   );
 
-  const config = new DocumentBuilder().setTitle('Fake Twitter API').setVersion('0.1');
+  const config = new DocumentBuilder().setTitle('Fake Twitter API').setVersion('0.1').addBearerAuth({
+    type: 'http',
+    name: 'Authorization',
+    in: 'header',
+    scheme: 'bearer',
+    bearerFormat: 'JWT',
+  });
   const document = SwaggerModule.createDocument(app, config.build());
   SwaggerModule.setup('docs', app, document);
 

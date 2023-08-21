@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { ModelsModule, UserEntity, UserProfileEntity } from '@fake-twitter/models';
-import { CoreUserService } from './core-user.service';
+import { CoreUserService } from './service/core-user.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { UserService } from './user.service';
+import { UserService } from './service/user.service';
 
 @Module({
   imports: [ModelsModule, TypeOrmModule.forFeature([UserEntity, UserProfileEntity])],

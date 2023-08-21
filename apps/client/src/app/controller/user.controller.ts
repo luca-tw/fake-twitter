@@ -1,11 +1,23 @@
-import { CreateUserArgsDto, LoginUserArgsDto, UserService } from '@fake-twitter/user';
-import { Body, Controller, Post } from '@nestjs/common';
-import { ApiOperation, ApiProperty, ApiTags } from '@nestjs/swagger';
+import { AuthGuard, CreateUserArgsDto, LoginUserArgsDto, UserId, UserService } from '@fake-twitter/user';
+import { BadRequestException, Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
+import { ApiBearerAuth, ApiOperation, ApiProperty, ApiTags } from '@nestjs/swagger';
 
 @ApiTags('Users')
 @Controller('/users')
 export class UserController {
   constructor(private readonly userService: UserService) {}
+
+  @ApiProperty()
+  @ApiOperation({ summary: '會員資料' })
+  @ApiBearerAuth()
+  @UseGuards(AuthGuard)
+  @Get('/me')
+  me(@UserId() userId: string) {
+    if (!userId) {
+      throw new BadRequestException();
+    }
+    return this.userService.findById(userId);
+  }
 
   @ApiProperty()
   @ApiOperation({ summary: '會員註冊' })
